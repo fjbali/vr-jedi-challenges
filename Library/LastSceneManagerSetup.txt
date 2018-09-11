@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/training_scene.unity
+  isLoaded: 1
+  isActive: 1
