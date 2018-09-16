@@ -126,6 +126,7 @@ public class Emitter : MonoBehaviour
 
 	private Vector3 idle_movement()
 	{
+		Debug.Log("IN IDLE MOVEMENT");
 		Vector3 position = new Vector3(transform.position.x + Mathf.Cos(Time.time) * Time.deltaTime * Mathf.PI / 4 * move_speed,
 										transform.position.y + Mathf.Sin(Time.time) * Time.deltaTime * Mathf.PI / 4 * move_speed,
 										transform.position.z + Mathf.Cos(Time.time) * Time.deltaTime * Mathf.PI / 4 * move_speed);
@@ -135,6 +136,7 @@ public class Emitter : MonoBehaviour
 
 	private Vector3 bezier_movement()
 	{
+		Debug.Log("BEZIER MOVEMENT");
 		float t = time / 2.0f * move_speed;
 		Vector3 new_position = 	Mathf.Pow(1 - t, 3.0f) * bezier_points[0] +
 								3 * Mathf.Pow(1 - t, 2.0f) * t * bezier_points[1] +
@@ -145,19 +147,21 @@ public class Emitter : MonoBehaviour
 
 	private Vector3[] pick_bezier_points(float x_min, float x_max, float y_min, float y_max, float z_min, float z_max)
 	{
+		Debug.Log("ENTERED PICK BEZIER POINTS");
 		Vector3 point_3 = new Vector3(Random.Range(x_min, x_max), Random.Range(y_min, y_max), Random.Range(z_min, z_max)); // goal
 		Vector3 point_2 = new Vector3(Random.Range(x_min, x_max), Random.Range(y_min, y_max), Random.Range(z_min, z_max));
 		Vector3 point_1 = new Vector3(Random.Range(x_min, x_max), Random.Range(y_min, y_max), Random.Range(z_min, z_max));
-
+		/* THIS IS AN INFINITE LOOp
+		 BECAUSE UNITY'S RANDOMS AREN'T REALLY RANDOM
 		while(Vector3.Magnitude(transform.position - point_3) < 3.0f || Time.deltaTime < 0.11f)
 		{
 			point_3.x = Random.Range(x_min, x_max);
 			point_3.y = Random.Range(y_min, y_max);
 			point_3.z = Random.Range(z_min, z_max);
-		}
+		}*/
 		
 		Vector3[] points = new Vector3[4]{transform.position, point_1, point_2, point_3};
-
+		Debug.Log("GOT THROUGH PICK BEZIER POINTS");
 		return points;
 	}
 }
