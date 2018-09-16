@@ -85,5 +85,10 @@ public class Laser : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+
+		else if(collision.gameObject.tag == "Target" && !can_damage)
+		{
+			Destroy(gameObject);
+		}
 	}
 }

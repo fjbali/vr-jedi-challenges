@@ -690,6 +690,11 @@ Prefab:
       propertyPath: m_SpotAngle
       value: 33.9
       objectReference: {fileID: 0}
+    - target: {fileID: 114478856298074518, guid: 77bdf3ae6b040e84c82beb4e33119cc9,
+        type: 2}
+      propertyPath: laser_speed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77bdf3ae6b040e84c82beb4e33119cc9, type: 2}
   m_IsPrefabAsset: 0

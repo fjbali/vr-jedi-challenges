@@ -12,9 +12,7 @@ public class Emitter : MonoBehaviour
 	public float laser_speed;
 
 	private CapsuleCollider target;
-	private SphereCollider edge; // spawn lasers at the edge
 	private Vector3[] bezier_points;
-	private Vector3 movement_spot;
 	private EmitterSound sound;
 
 	private float time = 0.0f;
@@ -31,11 +29,9 @@ public class Emitter : MonoBehaviour
 	void Start()
 	{
 		target = target_object.GetComponentInChildren<CapsuleCollider>();
-		edge = GetComponent<SphereCollider>();
 		sound = GetComponent<EmitterSound>();
 		bezier_points = new Vector3[4];
 		bezier_points[0] = transform.position;
-		movement_spot = transform.position;
 	}
 	
 	void Update()
@@ -95,7 +91,7 @@ public class Emitter : MonoBehaviour
 
 			if(level % 3 == 0)
 			{
-				fire_mode = 1;
+			//	fire_mode = 1;
 			}
 
 			else
@@ -152,6 +148,14 @@ public class Emitter : MonoBehaviour
 		Vector3 point_3 = new Vector3(Random.Range(x_min, x_max), Random.Range(y_min, y_max), Random.Range(z_min, z_max)); // goal
 		Vector3 point_2 = new Vector3(Random.Range(x_min, x_max), Random.Range(y_min, y_max), Random.Range(z_min, z_max));
 		Vector3 point_1 = new Vector3(Random.Range(x_min, x_max), Random.Range(y_min, y_max), Random.Range(z_min, z_max));
+
+		while(Vector3.Magnitude(transform.position - point_3) < 3.0f || Time.deltaTime < 0.11f)
+		{
+			point_3.x = Random.Range(x_min, x_max);
+			point_3.y = Random.Range(y_min, y_max);
+			point_3.z = Random.Range(z_min, z_max);
+		}
+		
 		Vector3[] points = new Vector3[4]{transform.position, point_1, point_2, point_3};
 
 		return points;

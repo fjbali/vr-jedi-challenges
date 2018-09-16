@@ -86,7 +86,7 @@ public class TrainingGameManager : MonoBehaviour
 
 		else
 		{
-			position = new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(0.5f, 3.0f), Random.Range(1.0f, 6.0f));
+			position = new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(0.5f, 5.0f), Random.Range(1.0f, 6.0f));
 		}
 
 		float fscale = Random.Range(0.75f, 1.5f);

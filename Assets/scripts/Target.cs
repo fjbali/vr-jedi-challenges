@@ -25,10 +25,10 @@ public class Target : MonoBehaviour
 	void Update()
 	{
 		time_alive += Time.deltaTime;
-		//sound.Play();
 		
 		if(breaking)
 		{
+			sound.Play();
 			break_time += Time.deltaTime;
 			if(break_time > sound.clip.length)
 			{
@@ -53,6 +53,5 @@ public class Target : MonoBehaviour
 	void OnDestroy()
 	{
 		score_manager.increase_player_score();
-		sound.Play();
 	}
 }
