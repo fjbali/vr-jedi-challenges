@@ -16,7 +16,7 @@ public class TargetParticleSystem : MonoBehaviour
 	{
 		time += Time.deltaTime;
 
-		if(time > 1.2f)
+		if(time > 0.8f)
 		{
 			Destroy(gameObject);
 		}

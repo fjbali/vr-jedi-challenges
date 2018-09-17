@@ -61,7 +61,7 @@ public class Laser : MonoBehaviour
 			}
 		}
 
-		if(smallest_angle < 20.0f)
+		if(smallest_angle < 45.0f)
 		{
 			return target;
 		}

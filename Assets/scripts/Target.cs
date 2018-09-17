@@ -6,39 +6,24 @@ public class Target : MonoBehaviour
 {
 	public float life_time = 0.0f;
 	public ScoreManager score_manager;
+	public GameObject target_particles_prefab;
 
-	private bool breaking = false;
-	private float break_time = 0.0f;
 	private float time_alive = 0.0f;
+	private bool hit_by_laser = false;
 
-	private AudioSource sound;
 	// Use this for initialization
 	void Start()
 	{
-		sound = GetComponent<AudioSource>();
-		sound.Pause();
 		//score_manager = GetComponentInParent<ScoreManager>();
-		break_time = sound.clip.length;
 	}
 	
 	// Update is called once per frame
 	void Update()
 	{
 		time_alive += Time.deltaTime;
-		
-		if(breaking)
+		if(time_alive >= life_time)
 		{
-			sound.Play();
-			break_time += Time.deltaTime;
-			if(break_time > sound.clip.length)
-			{
-				Destroy(gameObject);
-			}
-		}
-
-		if(time_alive > life_time)
-		{
-			breaking = true;
+			Destroy(gameObject);
 		}
 	}
 
@@ -46,12 +31,20 @@ public class Target : MonoBehaviour
 	{
 		if(collision.gameObject.tag == "Laser")
 		{
-			breaking = true;
+			hit_by_laser = true;
+			Destroy(gameObject);
 		}
 	}
 
 	void OnDestroy()
 	{
-		score_manager.increase_player_score();
+		if(hit_by_laser)
+		{
+			Instantiate(target_particles_prefab, transform.position, Quaternion.identity);
+			for(int i = 0; i < 3; i++)
+			{
+				score_manager.increase_player_score();
+			}
+		}
 	}
 }

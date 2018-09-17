@@ -151,14 +151,12 @@ public class Emitter : MonoBehaviour
 		Vector3 point_3 = new Vector3(Random.Range(x_min, x_max), Random.Range(y_min, y_max), Random.Range(z_min, z_max)); // goal
 		Vector3 point_2 = new Vector3(Random.Range(x_min, x_max), Random.Range(y_min, y_max), Random.Range(z_min, z_max));
 		Vector3 point_1 = new Vector3(Random.Range(x_min, x_max), Random.Range(y_min, y_max), Random.Range(z_min, z_max));
-		/* THIS IS AN INFINITE LOOp
-		 BECAUSE UNITY'S RANDOMS AREN'T REALLY RANDOM
-		while(Vector3.Magnitude(transform.position - point_3) < 3.0f || Time.deltaTime < 0.11f)
+		if(Vector3.Magnitude(transform.position - point_3) < 3.0f || Time.deltaTime < 0.11f)
 		{
-			point_3.x = Random.Range(x_min, x_max);
-			point_3.y = Random.Range(y_min, y_max);
-			point_3.z = Random.Range(z_min, z_max);
-		}*/
+			point_3.x += 0.5f;
+			point_3.y += 0.5f;
+			point_3.z += 0.5f;
+		}
 		
 		Vector3[] points = new Vector3[4]{transform.position, point_1, point_2, point_3};
 		Debug.Log("GOT THROUGH PICK BEZIER POINTS");
