@@ -40,11 +40,9 @@ public class Target : MonoBehaviour
 	{
 		if(hit_by_laser)
 		{
+			score_manager.increase_targets_broken();
+			Debug.Log("It recognizes it in console, but not in TrainingGameManager?");
 			Instantiate(target_particles_prefab, transform.position, Quaternion.identity);
-			for(int i = 0; i < 3; i++)
-			{
-				score_manager.increase_player_score();
-			}
 		}
 	}
 }

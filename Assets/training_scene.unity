@@ -223,12 +223,12 @@ Prefab:
     - target: {fileID: 114119378496392578, guid: 464583171408d8b4ab88140e498c51c4,
         type: 2}
       propertyPath: game_time
-      value: 120
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 114119378496392578, guid: 464583171408d8b4ab88140e498c51c4,
         type: 2}
       propertyPath: win_score
-      value: 60
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114119378496392578, guid: 464583171408d8b4ab88140e498c51c4,
         type: 2}

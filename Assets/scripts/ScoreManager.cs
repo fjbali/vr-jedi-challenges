@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
 	private int player_score = 0;
 	private int enemy_score = 0;
 	private int misses = 0;
+	private int targets_broken = 0;
 
 	// Use this for initialization
 	void Start()
@@ -38,6 +39,12 @@ public class ScoreManager : MonoBehaviour
 		Debug.Log("misses: " + misses);
 	}
 
+	public void increase_targets_broken()
+	{
+		targets_broken++;
+		Debug.Log("Targets broken: " + targets_broken);
+	}
+
 	public int get_player_score()
 	{
 		return player_score;
@@ -51,5 +58,10 @@ public class ScoreManager : MonoBehaviour
 	public int get_misses()
 	{
 		return misses;
+	}
+
+	public int get_targets_broken()
+	{
+		return targets_broken;
 	}
 }

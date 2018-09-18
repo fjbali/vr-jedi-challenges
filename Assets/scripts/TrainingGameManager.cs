@@ -39,9 +39,10 @@ public class TrainingGameManager : MonoBehaviour
 		string timer_text = "";
 		string score_text = "";
 		string misses_text = "";
+		string targets_broken_text = "";
 		string calculated_score_text = "";
 
-		calculated_score = score_manager.get_player_score() - 2.0f * score_manager.get_misses();
+		calculated_score = score_manager.get_player_score() + 3 * score_manager.get_targets_broken() - score_manager.get_misses();
 	
 		if(game_time != 0.0f)
 		{
@@ -60,9 +61,10 @@ public class TrainingGameManager : MonoBehaviour
 
 		score_text = "Score: " + score_manager.get_player_score().ToString();
 		misses_text = "Misses: " + score_manager.get_misses().ToString();
+		//targets_broken_text = "Targets hit: " + score_manager.get_targets_broken().ToString();
 		calculated_score_text = "Adjusted Score: " + calculated_score.ToString("F2");
 
-		if(win_score > 0 && score_manager.get_player_score() >= win_score)
+		if(win_score > 0 && calculated_score >= win_score)
 		{
 			return "You win!";
 		}
@@ -72,7 +74,7 @@ public class TrainingGameManager : MonoBehaviour
 			return "You lose! " + misses_text;
 		}
 
-		return timer_text + "\t" + score_text + "\n" + 
+		return timer_text + "\t" + score_text + "\t" + targets_broken_text + "\n" +
 						misses_text + "\t" + calculated_score_text;
 	}
 
